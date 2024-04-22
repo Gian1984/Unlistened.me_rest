@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -17,6 +18,9 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+
+Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm']);
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm']);
 
 Route::post('/add-favorite', [FavoriteController::class, 'store']);
 Route::get('/user-favorites', [UserController::class, 'getFavorites']);
