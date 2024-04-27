@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
+use App\Http\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -22,7 +21,7 @@ class ForgotPasswordController extends Controller
 
         $token = Str::random(64);
 
-        DB::table('password_reset_tokens')->insert([
+        DB::table('password_resets')->insert([
             'email' => $request->email,
             'token' => $token,
             'created_at' => Carbon::now()
@@ -60,7 +59,7 @@ class ForgotPasswordController extends Controller
             return response()->json( $validator->errors(), 401);
         }
 
-        $updatePassword = DB::table('password_reset_tokens')
+        $updatePassword = DB::table('password_resets')
             ->where([
                 'email' => $request->email,
                 'token' => $request->token
@@ -71,9 +70,6 @@ class ForgotPasswordController extends Controller
 
             $validator = ['error' => 'Invalid token!'];
             return response()->json($validator, 401);
-
-//            return redirect()->back()->withInput()->with('errors', 'Invalid token!');
-//
 
         }
 

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Models\Favorite;
 use Illuminate\Http\Request;
-use App\Models\Favorite;
-use App\Models\Podcast;
-use App\Models\User;
 
 class FavoriteController extends Controller
 {
