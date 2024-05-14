@@ -68,7 +68,7 @@
                 <tbody>
                 <tr>
                     <td>
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f4f4f4; color: #000000; width: 640px;" width="640">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 640px;" width="640">
                             <tbody>
                             <tr>
                                 <td class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 10px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
@@ -192,7 +192,7 @@
                                                     <div style="font-size: 12px; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
                                                         <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 14.399999999999999px;"> </p>
                                                         <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 14.399999999999999px;"> </p>
-                                                        <p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:9px;">We are committed to guaranteeing the security and protection of the private information that we process. To understand more about how we collect, store, and process your personal information in compliance with GDPR</span></p>
+                                                        <p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:9px;">We are committed to guaranteeing the security and protection of the private information that we process.</span></p>
                                                         <p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:9px;">©2024 Unlistened.me</span></p>
                                                     </div>
                                                 </div>

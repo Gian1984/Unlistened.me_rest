@@ -27,7 +27,7 @@ class ForgotPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        $response = ['message' => 'Successfully reset!'];
+        $response = ['message' => 'An email to reset your password has been sent to your address. Please check your inbox and follow the instructions to reset your password.'];
 
         Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
             $message->to($request->email);
