@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\FaqController;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -18,6 +19,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/update_user', [UserController::class, 'updateUser']);
 
 Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm']);
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm']);
@@ -29,6 +31,8 @@ Route::post('/delete-favorite', [UserController::class, 'destroyFavorite']);
 Route::post('/add-bookmark', [BookmarkController::class, 'store']);
 Route::get('/user-bookmarks', [UserController::class, 'getBookmarks']);
 Route::post('/delete-bookmark', [UserController::class, 'destroyBookmark']);
+
+Route::post('/new-faq', [FaqController::class, 'newFaq']);
 
 Route::get('/index', [ApiController::class, 'index']);
 Route::get('/podcast_episodes/{id}', [ApiController::class, 'podcastEpisodes']);

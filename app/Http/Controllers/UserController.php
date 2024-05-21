@@ -71,26 +71,37 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, User $user)
+    public function updateUser(Request $request, User $user)
     {
+        $user = Auth::user();
 
+        $rules = [];
+        if ($request->has('name')) {
+            $rules['name'] = 'required|string|max:255|unique:users,name,' . $user->id;
+        }
+        if ($request->has('email')) {
+            $rules['email'] = 'required|string|email|max:255|unique:users,email,' . $user->id;
+        }
 
-        $status = $user->update(
-            $request->only(
-                [
-                    'name',
-                    'email',
-                ]
-            )
-        );
+        // Validate the request
+        $validator = Validator::make($request->all(), $rules);
 
-        $user->where('id', $user->id)->update(array('is_admin' => $request->admin));
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
+        // Update the user's information
+        if ($request->has('name')) {
+            $user->name = $request->name;
+        }
+        if ($request->has('email')) {
+            $user->email = $request->email;
+        }
 
-        return response()->json([
-            'status' => $status,
-            'message' => $status ? 'User Updated!' : 'Error Updating User'
-        ]);
+        $user->save();
+
+        return response()->json(['message' => 'User updated successfully']);
+
     }
 
     public function destroy($id)
