@@ -7,6 +7,7 @@ use App\Http\Models\Favorite;
 use App\Http\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -59,6 +60,11 @@ class UserController extends Controller
 
         $user = User::create($data);
         $user->is_admin = 0;
+
+        Mail::send('email.welcomeMessage', ['user' =>  $user], function($message) use( $user){
+            $message->to(  $user->email);
+            $message->subject('Welcome to Unlistened.me');
+        });
 
         $token = $user->createToken('bigStore')->accessToken;
 

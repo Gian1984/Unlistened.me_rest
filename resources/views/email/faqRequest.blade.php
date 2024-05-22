@@ -75,7 +75,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                         <tr>
                                             <td style="padding-bottom:15px;padding-left:30px;padding-right:30px;padding-top:30px;width:100%;">
-                                                <div align="center" style="line-height:10px"><a href="https://www.unlistened.me/" style="outline:none" tabindex="-1" target="_blank"><img alt="unlistened.me" src="{{ asset('images/unlistened_transparen_logo_176.png') }}" style="display: block; height: auto; border: 0; width: 170px; max-width: 100%;" title="Belga mobility SRL" width="170"/></a></div>
+                                                <div align="center" style="line-height:10px"><a href="https://www.unlistened.me/" style="outline:none" tabindex="-1" target="_blank"><img alt="unlistened.me" src="{{ asset('images/unlistened_transparen_logo_176.png') }}" style="display: block; height: auto; border: 0; width: 170px; max-width: 100%;" title="Unlistened.me" width="170"/></a></div>
                                             </td>
                                         </tr>
                                     </table>
@@ -167,7 +167,7 @@
                                             <td>
                                                 <div style="font-family: sans-serif">
                                                     <div style="font-size: 12px; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
-                                                        <p style="margin: 0; font-size: 14px; text-align: center;">Unlistened.me<br/><a href="mailto:info@unlistened.me?subject=Mail from belgamobility.com" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.belgamobility.com/">info@unlistened.me</a></p>
+                                                        <p style="margin: 0; font-size: 14px; text-align: center;">Unlistened.me<br/><a href="mailto:info@unlistened.me?subject=Mail from unlistened.me" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.unlistened.me/">info@unlistened.me</a></p>
                                                         <p style="margin: 0; font-size: 14px; text-align: center;"><a href="https://www.unlistened.me/" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank">https://www.unlistened.me/</a></p>
                                                     </div>
                                                 </div>
@@ -179,9 +179,9 @@
                                             <td>
                                                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="138px">
                                                     <tr>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.instagram.com/belgamobility.be/" target="_blank"><img alt="Instagram" height="24" src="{{ asset('images/social-instagram-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="instagram" width="24"/></a></td>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.facebook.com/BELGAmobility.be" target="_blank"><img alt="Facebook" height="24" src="{{ asset('images/social-facebook-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="facebook" width="24"/></a></td>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.linkedin.com/in/abdelilah-jiari-a7ba671b9/" target="_blank"><img alt="LinkedIn" height="24" src="{{ asset('images/social-linkedin-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="LinkedIn" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.instagram.com/unlistened.me/" target="_blank"><img alt="Instagram" height="24" src="{{ asset('images/social-instagram-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="instagram" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.facebook.com/unlistened.me" target="_blank"><img alt="Facebook" height="24" src="{{ asset('images/social-facebook-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="facebook" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.linkedin.com/in/unlistened.me/" target="_blank"><img alt="LinkedIn" height="24" src="{{ asset('images/social-linkedin-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="LinkedIn" width="24"/></a></td>
                                                     </tr>
                                                 </table>
                                             </td>

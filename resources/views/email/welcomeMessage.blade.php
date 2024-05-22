@@ -75,7 +75,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                         <tr>
                                             <td style="padding-bottom:15px;padding-left:30px;padding-right:30px;padding-top:30px;width:100%;">
-                                                <div align="center" style="line-height:10px"><a href="https://www.unlistened.me/" style="outline:none" tabindex="-1" target="_blank"><img alt="unlistened.me" src="{{ asset('images/unlistened_transparen_logo_176.png') }}" style="display: block; height: auto; border: 0; width: 170px; max-width: 100%;" title="Unlistened.me" width="170"/></a></div>
+                                                <div align="center" style="line-height:10px"><a href="https://www.unlistened.me/" style="outline:none" tabindex="-1" target="_blank"><img alt="unlistened.me" src="{{ asset('images/unlistened_transparen_logo_176.png') }}" style="display: block; height: auto; border: 0; width: 170px; max-width: 100%;" title="Belga mobility SRL" width="170"/></a></div>
                                             </td>
                                         </tr>
                                     </table>
@@ -100,7 +100,7 @@
                                             <td style="padding-bottom:20px;padding-left:25px;padding-right:25px;padding-top:20px;">
                                                 <div style="font-family: sans-serif">
                                                     <div style="font-size: 12px; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
-                                                        <p style="margin: 0; font-size: 16px; text-align: left; mso-line-height-alt: 36px;"><span style="font-size:20px;color:#6366f1;"><strong>Dear customer:</strong></span></p>
+                                                        <p style="margin: 0; font-size: 16px; text-align: left; mso-line-height-alt: 36px;"><span style="font-size:20px;color:#6366f1;"><strong>Dear {{$user->name}}:</strong></span></p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -112,11 +112,21 @@
                                                 <div style="font-family: sans-serif">
                                                     <div style="font-size: 12px; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
                                                         <p style="margin: 0; font-size: 14px; text-align: left;">
-                                                            You have requested to generate a new password. To reset it, click on the link below:<br><br>
-                                                            <a style="text-decoration: underline; font-weight: bold; font-size: 18px; color: #6366f1;" href={{url('http://localhost:5173/reset_password/'.$token)}}>Reset password</a></p>
-                                                        <p style="margin: 0; font-size: 10px; text-align: left;">
-                                                            If you have not required this password reset, please ignore this email.
+                                                            We're thrilled to have you join our community of passionate podcast listeners. Unlistened.me is your new go-to platform for discovering, listening, and enjoying a diverse range of podcasts from around the globe.
                                                         </p>
+                                                        <p style="margin-left: 0; font-size: 14px; text-align: left; margin-top: 10px">
+                                                            Whether you're commuting, working out, or just relaxing at home, Unlistened.me offers a seamless and enjoyable podcast experience tailored just for you. With our intuitive interface and personalized recommendations, you'll never miss out on the content that matters most to you.
+                                                        </p>
+                                                        <p style="margin-left: 0; font-size: 14px; text-align: left; margin-top: 10px">
+                                                            Dive into a world of knowledge, stories, and entertainment. Explore our extensive library, create custom playlists, and connect with fellow listeners who share your interests. At Unlistened.me, every moment is an opportunity to discover something new.
+                                                        </p>
+                                                        <p style="margin-left: 0; font-size: 14px; text-align: left; margin-top: 10px">
+                                                            Thank you for choosing Unlistened.me. We're excited to accompany you on your podcast journey.
+                                                        </p>
+                                                        <p style="margin-left: 0; font-size: 14px; text-align: left; margin-top: 10px">
+                                                            Happy listening!
+                                                        </p>
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -177,9 +187,9 @@
                                             <td>
                                                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="138px">
                                                     <tr>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.instagram.com/unlistened.me/" target="_blank"><img alt="Instagram" height="24" src="{{ asset('images/social-instagram-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="instagram" width="24"/></a></td>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.facebook.com/unlistened.me" target="_blank"><img alt="Facebook" height="24" src="{{ asset('images/social-facebook-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="facebook" width="24"/></a></td>
-                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.linkedin.com/in/unlistened.me/" target="_blank"><img alt="LinkedIn" height="24" src="{{ asset('images/social-linkedin-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="LinkedIn" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.instagram.com/belgamobility.be/" target="_blank"><img alt="Instagram" height="24" src="{{ asset('images/social-instagram-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="instagram" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.facebook.com/BELGAmobility.be" target="_blank"><img alt="Facebook" height="24" src="{{ asset('images/social-facebook-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="facebook" width="24"/></a></td>
+                                                        <td style="padding:0 7px 0 7px;"><a href="https://www.linkedin.com/in/abdelilah-jiari-a7ba671b9/" target="_blank"><img alt="LinkedIn" height="24" src="{{ asset('images/social-linkedin-svgrepo-com.png') }}" style="display: block; height: auto; border: 0;" title="LinkedIn" width="24"/></a></td>
                                                     </tr>
                                                 </table>
                                             </td>
