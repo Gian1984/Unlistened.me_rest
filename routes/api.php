@@ -20,6 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/update_user', [UserController::class, 'updateUser']);
+Route::delete('/delete_users/{id}', [UserController::class, 'destroy']);
 
 Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm']);
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm']);

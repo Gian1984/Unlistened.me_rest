@@ -112,7 +112,20 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        return User::findOrFail($id)->delete();
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        Mail::send('email.deleteAccount', ['user' =>  $user], function($message) use( $user){
+            $message->to('info@unlistened.me');
+            $message->subject('Goodbye from Unlistened');
+        });
+
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully'], 200);
     }
 
     public function getFavorites()
