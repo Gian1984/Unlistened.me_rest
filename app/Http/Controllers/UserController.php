@@ -62,7 +62,7 @@ class UserController extends Controller
         $user->is_admin = 0;
 
         Mail::send('email.welcomeMessage', ['user' =>  $user], function($message) use( $user){
-            $message->to(  $user->email);
+            $message->to($user->email);
             $message->subject('Welcome to Unlistened.me');
         });
 
@@ -119,8 +119,8 @@ class UserController extends Controller
         }
 
         Mail::send('email.deleteAccount', ['user' =>  $user], function($message) use( $user){
-            $message->to('info@unlistened.me');
-            $message->subject('Goodbye from Unlistened');
+            $message->to($user->email);
+            $message->subject('Goodbye from Unlistened.me');
         });
 
         $user->delete();
@@ -149,15 +149,15 @@ class UserController extends Controller
     public function destroyFavorite(Request $request)
     {
         $request->validate([
-            'podcast_id' => 'required|integer',
+            'feed_id' => 'required|integer',
         ]);
 
         $userId = auth()->id();;  // Get the authenticated user's ID
-        $podcastId = $request->podcast_id;
+        $feedId = $request->feed_id;
 
         // Find the favorite in the database
         $favorite = Favorite::where('user_id', $userId)
-            ->where('podcast_id', $podcastId)
+            ->where('feed_id', $feedId)
             ->first();
 
         if (!$favorite) {

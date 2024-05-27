@@ -28,7 +28,7 @@ class FaqController extends Controller
 
         Mail::send('email.faqRequest', ['success' => $success], function ($message) use ($request) {
             $message->to(auth()->user()->email);
-            $message->to('faq@unlistened.me');
+            $message->to('support@unlistened.me');
 
             $message->subject('New question from Unlistened.me');
         });

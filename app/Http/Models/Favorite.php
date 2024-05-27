@@ -11,7 +11,7 @@ class Favorite extends Model
     use HasFactory, HasApiTokens;
 
     protected $fillable = [
-        'user_id', 'podcast_id','title'
+        'user_id', 'feed_id','title'
     ];
 
     public function user()

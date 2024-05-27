@@ -36,9 +36,10 @@ Route::post('/delete-bookmark', [UserController::class, 'destroyBookmark']);
 Route::post('/new-faq', [FaqController::class, 'newFaq']);
 
 Route::get('/index', [ApiController::class, 'index']);
-Route::get('/podcast_episodes/{id}', [ApiController::class, 'podcastEpisodes']);
-Route::get('/podcast_info/{id}', [ApiController::class, 'podcastInfo']);
+Route::get('/search_feed/{id}', [ApiController::class, 'searchFeed']);
+Route::get('/feed_info/{id}', [ApiController::class, 'feedInfo']);
 Route::get('/search-podcast/{title}', [ApiController::class, 'searchPod']);
+Route::get('/search_episode/{id}', [ApiController::class, 'searchPodcastEpisode']);
 
 
 

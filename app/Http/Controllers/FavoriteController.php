@@ -15,12 +15,12 @@ class FavoriteController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'podcast_id' => 'required',
+            'feed_id' => 'required',
         ]);
 
         $favorite = Favorite::create([
             'user_id' => auth()->id(),
-            'podcast_id'=> $request->podcast_id,
+            'feed_id'=> $request->feed_id,
             'title' => $request->title,
         ]);
 

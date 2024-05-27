@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->bigInteger('podcast_id');
+            $table->bigInteger('feed_id');
             $table->string('title');
             $table->timestamps();
         });

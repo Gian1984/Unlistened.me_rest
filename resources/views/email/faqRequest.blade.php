@@ -167,7 +167,7 @@
                                             <td>
                                                 <div style="font-family: sans-serif">
                                                     <div style="font-size: 12px; font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
-                                                        <p style="margin: 0; font-size: 14px; text-align: center;">Unlistened.me<br/><a href="mailto:info@unlistened.me?subject=Mail from unlistened.me" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.unlistened.me/">info@unlistened.me</a></p>
+                                                        <p style="margin: 0; font-size: 14px; text-align: center;">Unlistened.me<br/><a href="mailto:support@unlistened.me?subject=Mail from unlistened.me" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.unlistened.me/">support@unlistened.me</a></p>
                                                         <p style="margin: 0; font-size: 14px; text-align: center;"><a href="https://www.unlistened.me/" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank">https://www.unlistened.me/</a></p>
                                                     </div>
                                                 </div>
