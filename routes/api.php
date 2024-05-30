@@ -8,6 +8,9 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\StatController;
+use App\Http\Controllers\AdminController;
+
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -32,6 +35,10 @@ Route::post('/delete-favorite', [UserController::class, 'destroyFavorite']);
 Route::post('/add-bookmark', [BookmarkController::class, 'store']);
 Route::get('/user-bookmarks', [UserController::class, 'getBookmarks']);
 Route::post('/delete-bookmark', [UserController::class, 'destroyBookmark']);
+
+Route::post('/add_click', [StatController::class, 'addPlayClick']);
+
+Route::get('/get_stats', [AdminController::class, 'getStatInfo']);
 
 Route::post('/new-faq', [FaqController::class, 'newFaq']);
 
