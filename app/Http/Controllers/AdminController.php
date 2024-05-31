@@ -26,6 +26,7 @@ class AdminController extends Controller
 
 
         $userCount = User::count();
+        $deletedAccountsCount = User::onlyTrashed()->count();
         $totalBookmarks = Bookmark::count();
         $totalFavotites = Favorite::count();
         $totalPlay = Play::count();
@@ -38,13 +39,14 @@ class AdminController extends Controller
             ->get();
 
         return response()->json([
-            'userCount' => $userCount,
-            'totalBookmarks' => $totalBookmarks,
-            'totalFavotites' => $totalFavotites,
-            'playClicks' => $totalPlay,
-            'clicksPlayPerMonth'=> $clicksPlayPerMonth,
-            'downloadClicks' => $totalDownload,
-            'clicksDownloadPerMonth'=> $clicksDownloadPerMonth,
+            'Account active' => $userCount,
+            'Deleted accounts' => $deletedAccountsCount,
+            'Total bookmarks' => $totalBookmarks,
+            'Total Favotites' => $totalFavotites,
+            'Podcasts listened' => $totalPlay,
+            'Podcasts listened per month'=> $clicksPlayPerMonth,
+            'Podcasts downloaded' => $totalDownload,
+            'Podcasts downloaded per month'=> $clicksDownloadPerMonth,
         ]);
     }
 }
