@@ -18,7 +18,7 @@ class StatController extends Controller
             'episode_id' => $request->episode_id,
             'episode_title' => $request->episode_title,
         ]);
-        
+
         return response()->json($play, 201);
     }
 }
