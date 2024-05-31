@@ -118,7 +118,7 @@
                                                             We hope that your time with us was filled with enriching stories, engaging discussions, and moments of joy. Your presence has been truly appreciated, and we genuinely hope that you’ll find your way back to us soon.
                                                         </p>
                                                         <p style="margin-left: 0; font-size: 14px; text-align: left; margin-top: 10px">
-                                                            Your feedback is incredibly important to us. If there’s anything we can do to improve our service or if you have any suggestions, please don't hesitate to reach out. You can email us at <a href="mailto:support@unlistened.me?subject=Make it better mail" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.unlistened.me/">info@unlistened.me</a> – we’re here to listen and make Unlistened.me better for everyone.
+                                                            Your feedback is incredibly important to us. If there’s anything we can do to improve our service or if you have any suggestions, please don't hesitate to reach out. You can email us at <a href="mailto:support@unlistened.me?subject=Make it better mail" rel="noopener" style="text-decoration: underline; color: #6366f1;" target="_blank" title="https://www.unlistened.me/">support@unlistened.me</a> – we’re here to listen and make Unlistened.me better for everyone.
                                                         </p>
                                                     </div>
                                                 </div>
