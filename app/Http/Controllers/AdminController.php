@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\Bookmark;
+use App\Http\Models\Download;
 use App\Http\Models\Favorite;
 use App\Http\Models\User;
 use App\Http\Models\Play;
@@ -27,8 +28,12 @@ class AdminController extends Controller
         $userCount = User::count();
         $totalBookmarks = Bookmark::count();
         $totalFavotites = Favorite::count();
-        $totalClicks = Play::count();
-        $clicksPerMonth = Play::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as clicks')
+        $totalPlay = Play::count();
+        $clicksPlayPerMonth = Play::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as clicks')
+            ->groupBy('year', 'month')
+            ->get();
+        $totalDownload = Download::count();
+        $clicksDownloadPerMonth = Download::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as clicks')
             ->groupBy('year', 'month')
             ->get();
 
@@ -36,8 +41,10 @@ class AdminController extends Controller
             'userCount' => $userCount,
             'totalBookmarks' => $totalBookmarks,
             'totalFavotites' => $totalFavotites,
-            'totalClicks' => $totalClicks,
-            'clicksPerMonth'=> $clicksPerMonth
+            'playClicks' => $totalPlay,
+            'clicksPlayPerMonth'=> $clicksPlayPerMonth,
+            'downloadClicks' => $totalDownload,
+            'clicksDownloadPerMonth'=> $clicksDownloadPerMonth,
         ]);
     }
 }

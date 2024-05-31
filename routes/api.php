@@ -36,7 +36,8 @@ Route::post('/add-bookmark', [BookmarkController::class, 'store']);
 Route::get('/user-bookmarks', [UserController::class, 'getBookmarks']);
 Route::post('/delete-bookmark', [UserController::class, 'destroyBookmark']);
 
-Route::post('/add_click', [StatController::class, 'addPlayClick']);
+Route::post('/add_play_click', [StatController::class, 'addPlayClick']);
+Route::post('/add_download_click', [StatController::class, 'addDownloadClick']);
 
 Route::get('/get_stats', [AdminController::class, 'getStatInfo']);
 
