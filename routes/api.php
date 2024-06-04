@@ -22,6 +22,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/update_user', [UserController::class, 'updateUser']);
 Route::delete('/delete_users/{id}', [UserController::class, 'destroy']);
 
@@ -40,6 +41,7 @@ Route::post('/add_play_click', [StatController::class, 'addPlayClick']);
 Route::post('/add_download_click', [StatController::class, 'addDownloadClick']);
 
 Route::get('/get_stats', [AdminController::class, 'getStatInfo']);
+Route::get('/users', [AdminController::class, 'getAllUsers']);
 
 Route::post('/new-faq', [FaqController::class, 'newFaq']);
 

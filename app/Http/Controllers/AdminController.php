@@ -49,4 +49,22 @@ class AdminController extends Controller
             'Podcasts downloaded per month'=> $clicksDownloadPerMonth,
         ]);
     }
+
+    public function getAllUsers()
+    {
+        // Check if user is authenticated
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        // Check if authenticated user is an admin
+        $user = Auth::user();
+        if ($user->is_admin !== 1) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
+
+        $users = User::all(); // Retrieve all users
+        return response()->json($users); // Return users as JSON response
+    }
+
 }
