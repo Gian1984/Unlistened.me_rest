@@ -119,6 +119,22 @@ class UserController extends Controller
 
     }
 
+    public function updateAdminStatus(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if ($user) {
+            $user->is_admin = $request->is_admin;
+            $user->save();
+
+            return response()->json([
+                'is_admin' => $user->is_admin,
+                'message' => 'Successfully update role!'
+            ], 200);
+        }
+
+        return response()->json(['error' => 'User not found'], 404);
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);

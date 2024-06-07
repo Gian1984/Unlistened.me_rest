@@ -24,6 +24,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/update_user', [UserController::class, 'updateUser']);
+Route::post('/update-status', [UserController::class, 'updateAdminStatus']);
 Route::delete('/delete_users/{id}', [UserController::class, 'destroy']);
 
 Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm']);
