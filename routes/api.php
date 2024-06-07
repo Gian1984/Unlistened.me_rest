@@ -45,6 +45,9 @@ Route::get('/get_stats', [AdminController::class, 'getStatInfo']);
 Route::get('/users', [AdminController::class, 'getAllUsers']);
 
 Route::post('/new-faq', [FaqController::class, 'newFaq']);
+Route::get('/faqs', [FaqController::class, 'index']);
+Route::post('/update-faq-status', [FaqController::class, 'updateFaqStatus']);
+Route::delete('/delete_faq/{id}', [FaqController::class, 'destroy']);
 
 Route::get('/index', [ApiController::class, 'index']);
 Route::get('/search_feed/{id}', [ApiController::class, 'searchFeed']);

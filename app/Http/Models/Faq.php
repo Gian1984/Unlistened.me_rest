@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 
 
+
 class Faq extends Model
 {
     use HasFactory, SoftDeletes, HasApiTokens;

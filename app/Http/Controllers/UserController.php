@@ -192,7 +192,7 @@ class UserController extends Controller
         // Delete the favorite
         $favorite->delete();
 
-        return response()->json(['message' => 'Favorite successfully deleted']);
+        return response()->json(['message' => 'Feed successfully deleted']);
     }
 
     public function getBookmarks()
