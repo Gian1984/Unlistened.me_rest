@@ -48,7 +48,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
             'password' => [
                 'required',
                 Password::min(8)
@@ -60,6 +60,7 @@ class UserController extends Controller
 
         ]);
 
+
         if ($validator->fails()) {
             return response()->json( $validator->errors(), 401);
         }
@@ -67,8 +68,18 @@ class UserController extends Controller
         $data = $request->only(['name','email','password']);
         $data['password'] = bcrypt($data['password']);
 
-        $user = User::create($data);
-        $user->is_admin = 0;
+        // Check if the user with the email exists in the trashed users
+        $user = User::withTrashed()->where('email', $data['email'])->first();
+
+        if ($user) {
+            // Restore the user
+            $user->restore();
+            $user->update(['name' => $data['name'], 'password' => $data['password']]);
+        } else {
+            // Create new user
+            $user = User::create($data);
+            $user->is_admin = 0;
+        }
 
         Mail::send('email.welcomeMessage', ['user' =>  $user], function($message) use( $user){
             $message->to($user->email);
