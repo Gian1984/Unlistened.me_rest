@@ -52,7 +52,9 @@ Route::delete('/delete_faq/{id}', [FaqController::class, 'destroy']);
 Route::get('/index', [ApiController::class, 'index']);
 Route::get('/search_feed/{id}', [ApiController::class, 'searchFeed']);
 Route::get('/feed_info/{id}', [ApiController::class, 'feedInfo']);
-Route::get('/search-podcast/{title}', [ApiController::class, 'searchPod']);
+Route::get('/search-feed-by-title/{title}', [ApiController::class, 'searchFeedByTitle']);
+Route::get('/feed-cat', [ApiController::class, 'getFeedCategory']);
+Route::get('/search-feeds-by-cat/{cat}', [ApiController::class, 'searchFeedsByCategory']);
 Route::get('/search_episode/{id}', [ApiController::class, 'searchPodcastEpisode']);
 
 
