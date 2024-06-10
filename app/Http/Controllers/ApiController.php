@@ -146,7 +146,7 @@ class ApiController extends Controller
             "X-Auth-Date" => $apiHeaderTime,
             "Authorization" => $hash
         ])->get('https://api.podcastindex.org/api/1.0/recent/feeds', [
-            'max' => 20,
+            'max' => 100,
             'cat' => $id,
         ]);
 

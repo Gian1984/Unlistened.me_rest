@@ -21,7 +21,9 @@ class FaqController extends Controller
         }
 
 
-        return response()->json(Faq::all(),200);
+        $faqs = Faq::orderBy('created_at', 'desc')->get();
+
+        return response()->json($faqs, 200);
     }
 
     public function newFaq(Request $request)
