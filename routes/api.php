@@ -31,6 +31,7 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm']);
 
 Route::post('/add-favorite', [FavoriteController::class, 'store']);
+Route::post('/favorites/{id}/update-section', [FavoriteController::class, 'updateSectionFavs']);
 Route::get('/user-favorites', [UserController::class, 'getFavorites']);
 Route::post('/delete-favorite', [UserController::class, 'destroyFavorite']);
 

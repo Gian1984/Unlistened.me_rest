@@ -132,7 +132,14 @@ class UserController extends Controller
 
     public function updateAdminStatus(Request $request)
     {
+        $id = $request->user_id;
+
+        if ($id == 1 || $id == 2) {
+            return response()->json(['error' => 'This user cannot be modify'], 403);
+        }
+
         $user = User::find($request->user_id);
+
         if ($user) {
             $user->is_admin = $request->is_admin;
             $user->save();
@@ -148,6 +155,11 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+
+        if ($id == 1 || $id == 2) {
+            return response()->json(['error' => 'This user cannot be deleted'], 403);
+        }
+
         $user = User::find($id);
 
         if (!$user) {

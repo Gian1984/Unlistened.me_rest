@@ -30,4 +30,13 @@ class FavoriteController extends Controller
             'message' => $favorite ? 'Favorite Created!' : 'Error Creating Favorite'
         ]);
     }
+
+    public function updateSectionFavs(Request $request, $id)
+    {
+        $favorite = Favorite::findOrFail($id);
+        $favorite->section = $request->section;
+        $favorite->save();
+
+        return response()->json(['message' => 'Successfully move!']);
+    }
 }
