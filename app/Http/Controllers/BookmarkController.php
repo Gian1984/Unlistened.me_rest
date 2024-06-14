@@ -30,4 +30,13 @@ class BookmarkController extends Controller
             'message' => $favorite ? 'Bookmark Created!' : 'Error Creating Bookmark'
         ]);
     }
+
+    public function updateSectionBook(Request $request, $id)
+    {
+        $favorite = Bookmark::findOrFail($id);
+        $favorite->section = $request->section;
+        $favorite->save();
+
+        return response()->json(['message' => 'Successfully move!']);
+    }
 }

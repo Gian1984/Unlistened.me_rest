@@ -36,6 +36,7 @@ Route::get('/user-favorites', [UserController::class, 'getFavorites']);
 Route::post('/delete-favorite', [UserController::class, 'destroyFavorite']);
 
 Route::post('/add-bookmark', [BookmarkController::class, 'store']);
+Route::post('/bookmarks/{id}/update-section', [BookmarkController::class, 'updateSectionBook']);
 Route::get('/user-bookmarks', [UserController::class, 'getBookmarks']);
 Route::post('/delete-bookmark', [UserController::class, 'destroyBookmark']);
 
