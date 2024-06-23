@@ -2,18 +2,30 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 
 
 class ApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Required values
         $apiKey = config('services.podcastindex.api_key');
         $apiSecret = config('services.podcastindex.api_secret');
         $apiHeaderTime = time();
+
+        $user = Auth::user();
+
+        if ($user) {
+            // Get the user's preferred language from their profile
+            $preferredLanguage = Auth::user()->preferred_language; // Assuming 'preferred_language' is a column in the users table
+        } else {
+            $languageController = new LanguageController();
+            $languageResponse = $languageController->detectLanguage($request);
+            $preferredLanguage = $languageResponse->getData()->language;
+        }
 
         // Hash them to get the Authorization token
         $hash = sha1($apiKey.$apiSecret.$apiHeaderTime);
@@ -26,7 +38,8 @@ class ApiController extends Controller
             "Authorization" => $hash
         ])->get('https://api.podcastindex.org/api/1.0/podcasts/trending', [
             'since' => 953501165,
-            'max' => 100
+            'max' => 100,
+            'lang'=>$preferredLanguage
         ]);
 
         // Return the response body
@@ -130,7 +143,7 @@ class ApiController extends Controller
         return $response->body();
     }
 
-    public function searchFeedsByCategory($id)
+    public function searchFeedsByCategory(Request $request, $id)
     {
         // Required values
         $apiKey = config('services.podcastindex.api_key');
@@ -139,6 +152,17 @@ class ApiController extends Controller
 
         // Hash them to get the Authorization token
         $hash = sha1($apiKey.$apiSecret.$apiHeaderTime);
+
+        $user = Auth::user();
+
+        if ($user) {
+            // Get the user's preferred language from their profile
+            $preferredLanguage = Auth::user()->preferred_language; // Assuming 'preferred_language' is a column in the users table
+        } else {
+            $languageController = new LanguageController();
+            $languageResponse = $languageController->detectLanguage($request);
+            $preferredLanguage = $languageResponse->getData()->language;
+        }
 
         // Make the request to an API endpoint
         $response = Http::withHeaders([
@@ -149,6 +173,7 @@ class ApiController extends Controller
         ])->get('https://api.podcastindex.org/api/1.0/recent/feeds', [
             'max' => 100,
             'cat' => $id,
+            'lang'=>$preferredLanguage
         ]);
 
         // Return the response body

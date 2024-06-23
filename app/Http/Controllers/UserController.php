@@ -57,7 +57,7 @@ class UserController extends Controller
                     ->numbers()
                     ->symbols(),
             ],
-
+            'preferred_language'=> 'nullable|string|max:5',
         ]);
 
 
@@ -108,6 +108,9 @@ class UserController extends Controller
         if ($request->has('email')) {
             $rules['email'] = 'required|string|email|max:255|unique:users,email,' . $user->id;
         }
+        if ($request->has('preferred_language')) {
+            $rules['preferred_language'] = 'string|max:5' . $user->id;
+        }
 
         // Validate the request
         $validator = Validator::make($request->all(), $rules);
@@ -122,6 +125,9 @@ class UserController extends Controller
         }
         if ($request->has('email')) {
             $user->email = $request->email;
+        }
+        if ($request->has('preferred_language')) {
+            $user->preferred_language = $request->preferred_language;
         }
 
         $user->save();

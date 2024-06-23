@@ -10,6 +10,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\StatController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LanguageController;
 
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -34,6 +35,8 @@ Route::post('/add-favorite', [FavoriteController::class, 'store']);
 Route::post('/favorites/{id}/update-section', [FavoriteController::class, 'updateSectionFavs']);
 Route::get('/user-favorites', [UserController::class, 'getFavorites']);
 Route::post('/delete-favorite', [UserController::class, 'destroyFavorite']);
+
+Route::post('/detect-language', [LanguageController::class, 'detectLanguage']);
 
 Route::post('/add-bookmark', [BookmarkController::class, 'store']);
 Route::post('/bookmarks/{id}/update-section', [BookmarkController::class, 'updateSectionBook']);
