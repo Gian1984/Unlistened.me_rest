@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     public function index()
     {
         return response()->json(User::with(['orders'])->get());
+    }
+
+    public function log(Request $request)
+    {
+
+        // Your existing logic
     }
 
     public function login(Request $request)
@@ -136,6 +143,34 @@ class UserController extends Controller
 
     }
 
+    public function languageUser(Request $request, User $user)
+    {
+        $user = Auth::user();
+
+        $rules = [];
+
+        if ($request->has('preferred_language')) {
+            $rules['preferred_language'] = 'string|max:5' . $user->id;
+        }
+
+        // Validate the request
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Update the user's information
+        if ($request->has('preferred_language')) {
+            $user->preferred_language = $request->preferred_language;
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'Language updated successfully']);
+
+    }
+
     public function updateAdminStatus(Request $request)
     {
         $id = $request->user_id;
@@ -226,20 +261,20 @@ class UserController extends Controller
 
     public function getBookmarks()
     {
-        $userId = auth()->id(); // Securely getting the authenticated user's ID
+        $userId = auth()->id();
 
         if (!$userId) {
             return response()->json(['message' => 'User not authenticated'], 401);
         }
 
         // Fetch all favorite records where user_id matches the given $userId
-        $favorites = Bookmark::where('user_id', $userId)->get();
+        $bookmarks = Bookmark::where('user_id', $userId)->get();
 
-        if ($favorites->isEmpty()) {
+        if ($bookmarks->isEmpty()) {
             return response()->json(['message' => 'No favorites found for this user'], 404);
         }
 
-        return response()->json($favorites);
+        return response()->json($bookmarks);
     }
 
     public function destroyBookmark(Request $request)
@@ -265,4 +300,30 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Episode successfully deleted']);
     }
+
+    public function loginMobile(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'device_name' => 'required',
+        ]);
+
+        $status = 401;
+        $response = ['error' => 'Wrong password or user name please try again.'];
+
+        if (Auth::attempt($request->only(['email', 'password']))) {
+            $status = 200;
+            $user = Auth::user();
+            $token = $user->createToken($request->device_name)->plainTextToken;
+            $response = [
+                'user' => $user,
+                'check' => Auth::check(),
+                'token' => $token, // This is now a plain string
+            ];
+        }
+
+        return response()->json($response, $status);
+    }
+
 }
