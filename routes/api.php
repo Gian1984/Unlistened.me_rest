@@ -11,6 +11,9 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\StatController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MusicController;
+use App\Http\Controllers\MusicFavoriteController;
+use App\Http\Controllers\MusicPlaylistController;
 
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -47,6 +50,14 @@ Route::get('/feed-cat', [ApiController::class, 'getFeedCategory']);
 Route::get('/search-feeds-by-cat/{cat}', [ApiController::class, 'searchFeedsByCategory']);
 Route::get('/search_episode/{id}', [ApiController::class, 'searchPodcastEpisode']);
 
+// Music — public
+Route::get('/music/trending', [MusicController::class, 'trending']);
+Route::get('/music/search', [MusicController::class, 'search']);
+Route::get('/music/track/{id}', [MusicController::class, 'track']);
+Route::get('/music/similar/{id}', [MusicController::class, 'similar']);
+Route::get('/music/album/{id}', [MusicController::class, 'album']);
+Route::get('/music/artist/{id}', [MusicController::class, 'artist']);
+Route::get('/music/radios', [MusicController::class, 'radios']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -69,6 +80,22 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/get_stats', [AdminController::class, 'getStatInfo']);
     Route::get('/users', [AdminController::class, 'getAllUsers']);
+
+    // Music — favorites
+    Route::get('/music/favorites', [MusicFavoriteController::class, 'index']);
+    Route::post('/music/favorites', [MusicFavoriteController::class, 'store']);
+    Route::delete('/music/favorites/{trackId}', [MusicFavoriteController::class, 'destroy']);
+    Route::get('/music/favorites/check/{trackId}', [MusicFavoriteController::class, 'check']);
+
+    // Music — playlists
+    Route::get('/music/playlists', [MusicPlaylistController::class, 'index']);
+    Route::post('/music/playlists', [MusicPlaylistController::class, 'store']);
+    Route::get('/music/playlists/{id}', [MusicPlaylistController::class, 'show']);
+    Route::put('/music/playlists/{id}', [MusicPlaylistController::class, 'update']);
+    Route::delete('/music/playlists/{id}', [MusicPlaylistController::class, 'destroy']);
+    Route::post('/music/playlists/{id}/tracks', [MusicPlaylistController::class, 'addTrack']);
+    Route::delete('/music/playlists/{id}/tracks/{trackId}', [MusicPlaylistController::class, 'removeTrack']);
+    Route::put('/music/playlists/{id}/reorder', [MusicPlaylistController::class, 'reorder']);
 
 });
 

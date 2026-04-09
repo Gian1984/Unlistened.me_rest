@@ -19,6 +19,10 @@ return [
         'api_secret' => env('PODCASTINDEX_SEC_KEY'),
     ],
 
+    'jamendo' => [
+        'client_id' => env('JAMENDO_CLIENT_ID'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
