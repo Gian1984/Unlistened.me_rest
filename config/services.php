@@ -19,10 +19,6 @@ return [
         'api_secret' => env('PODCASTINDEX_SEC_KEY'),
     ],
 
-    'jamendo' => [
-        'client_id' => env('JAMENDO_CLIENT_ID'),
-    ],
-
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
@@ -39,5 +35,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+	'jamendo' => [                                                                                                                                                                                                                                                                                                
+          'client_id'     => env('JAMENDO_CLIENT_ID'),     
+          'client_secret' => env('JAMENDO_CLIENT_SECRET'),                                                                                                                                                                                                                                                          
+      ],  
 ];

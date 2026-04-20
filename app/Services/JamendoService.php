@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
@@ -24,14 +25,16 @@ class JamendoService
         return $response->json() ?? [];
     }
 
-    public function getTrending(int $limit = 20, string $tags = ''): array
+    public function getTrendingTracks(string $genre = '', int $limit = 20, int $offset = 0): array
     {
-        return $this->get('tracks', array_filter([
-            'order'   => 'popularity_week',
-            'limit'   => $limit,
-            'tags'    => $tags,
-            'include' => 'musicinfo',
-        ]));
+        return $this->get('tracks', [
+            'order'       => 'popularity_week',
+            'tags'        => $genre,
+            'limit'       => $limit,
+            'offset'      => $offset,
+            'include'     => 'musicinfo',
+            'audioformat' => 'mp32',
+        ]);
     }
 
     public function search(string $query, int $limit = 20, int $offset = 0): array
@@ -55,6 +58,24 @@ class JamendoService
         ]);
     }
 
+    public function getAlbums(
+        string $query = '',
+        int $limit = 20,
+        int $offset = 0,
+        string $artist = '',
+        string $order = 'popularity_week',
+        string $type = ''
+    ): array {
+        return $this->get('albums', array_filter([
+            'namesearch'  => $query,
+            'artist_name' => $artist,
+            'limit'       => $limit,
+            'offset'      => $offset,
+            'order'       => $order,
+            'type'        => $type,
+        ]));
+    }
+
     public function getTrack(string $id): array
     {
         return $this->get('tracks', ['id' => $id, 'include' => 'musicinfo']);
@@ -62,7 +83,12 @@ class JamendoService
 
     public function getAlbum(string $id): array
     {
-        return $this->get('albums', ['id' => $id, 'include' => 'musicinfo tracks']);
+        return $this->get('albums', ['id' => $id, 'include' => 'musicinfo']);
+    }
+
+    public function getAlbumWithTracks(string $id): array
+    {
+        return $this->get('albums/tracks', ['id' => $id, 'include' => 'musicinfo']);
     }
 
     public function getArtist(string $id): array

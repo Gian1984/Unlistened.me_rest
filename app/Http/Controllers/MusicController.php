@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Services\JamendoService;
@@ -10,9 +11,11 @@ class MusicController extends Controller
 
     public function trending(Request $request)
     {
-        $tags  = $request->query('genre', '');
-        $limit = (int) $request->query('limit', 20);
-        return response()->json($this->jamendo->getTrending($limit, $tags));
+        $tags   = $request->query('genre', '');
+        $limit  = (int) $request->query('limit', 20);
+        $offset = (int) $request->query('offset', 0);
+
+        return response()->json($this->jamendo->getTrendingTracks($tags, $limit, $offset));
     }
 
     public function search(Request $request)
@@ -28,6 +31,20 @@ class MusicController extends Controller
         return response()->json($data);
     }
 
+    public function albums(Request $request)
+    {
+        $q      = $request->query('q', '');
+        $artist = $request->query('artist', '');
+        $offset = (int) $request->query('offset', 0);
+        $limit  = (int) $request->query('limit', 20);
+        $order  = $request->query('order', 'popularity_week');
+        $type   = $request->query('type', '');
+
+        return response()->json(
+            $this->jamendo->getAlbums($q, $limit, $offset, $artist, $order, $type)
+        );
+    }
+
     public function track(string $id)
     {
         return response()->json($this->jamendo->getTrack($id));
@@ -35,6 +52,13 @@ class MusicController extends Controller
 
     public function album(string $id)
     {
+        $albumWithTracks = $this->jamendo->getAlbumWithTracks($id);
+        $results = $albumWithTracks['results'] ?? [];
+
+        if (!empty($results)) {
+            return response()->json($albumWithTracks);
+        }
+
         return response()->json($this->jamendo->getAlbum($id));
     }
 

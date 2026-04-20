@@ -6,17 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
-    {
-        Schema::create('music_playlists', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
-    }
+    /**
+     * Run the migrations.
+     */
+  public function up(): void
+  {                                                                                                                                                                                                                                                                                                                 
+      Schema::create('music_playlists', function (Blueprint $table) {
+          $table->id();                                                                                                                                                                                                                                                                                             
+          $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+          $table->string('name');                                                                                                                                                                                                                                                                                   
+          $table->string('description')->nullable();        
+          $table->timestamps();
+      });                                                                                                                                                                                                                                                                                                           
+  }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('music_playlists');

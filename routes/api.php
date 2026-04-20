@@ -14,10 +14,21 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\MusicFavoriteController;
 use App\Http\Controllers\MusicPlaylistController;
+use App\Http\Controllers\ListeningHistoryController;
 
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+
+    // Listening History
+    Route::get('/history', [ListeningHistoryController::class, 'index']);
+    Route::post('/history', [ListeningHistoryController::class, 'upsert']);
+    Route::patch('/history/{id}', [ListeningHistoryController::class, 'update']);
+    Route::delete('/history/{id}', [ListeningHistoryController::class, 'destroy']);
+    Route::delete('/history', [ListeningHistoryController::class, 'clear']);
+
+    // Music favorites reorder
+    Route::put('/music/favorites/reorder', [MusicFavoriteController::class, 'reorder']);
 });*/
 
 Route::get('/user', function (Request $request) {
@@ -53,6 +64,7 @@ Route::get('/search_episode/{id}', [ApiController::class, 'searchPodcastEpisode'
 // Music — public
 Route::get('/music/trending', [MusicController::class, 'trending']);
 Route::get('/music/search', [MusicController::class, 'search']);
+Route::get('/music/albums', [MusicController::class, 'albums']);
 Route::get('/music/track/{id}', [MusicController::class, 'track']);
 Route::get('/music/similar/{id}', [MusicController::class, 'similar']);
 Route::get('/music/album/{id}', [MusicController::class, 'album']);
@@ -97,5 +109,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/music/playlists/{id}/tracks/{trackId}', [MusicPlaylistController::class, 'removeTrack']);
     Route::put('/music/playlists/{id}/reorder', [MusicPlaylistController::class, 'reorder']);
 
-});
 
+    // Listening History
+    Route::get('/history', [ListeningHistoryController::class, 'index']);
+    Route::post('/history', [ListeningHistoryController::class, 'upsert']);
+    Route::patch('/history/{id}', [ListeningHistoryController::class, 'update']);
+    Route::delete('/history/{id}', [ListeningHistoryController::class, 'destroy']);
+    Route::delete('/history', [ListeningHistoryController::class, 'clear']);
+
+    // Music favorites reorder
+    Route::put('/music/favorites/reorder', [MusicFavoriteController::class, 'reorder']);
+});
